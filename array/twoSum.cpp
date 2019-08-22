@@ -1,4 +1,13 @@
 
+/* 
+ WrittenBy : Himanshu Srivastava
+ Problem : Two Sum 
+ TimeComplexity : O(n)
+
+ */
+
+
+
 #include<iostream>
 #include <vector>
 #include<bits/stdc++.h> 
