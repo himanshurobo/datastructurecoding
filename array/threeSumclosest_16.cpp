@@ -2,7 +2,7 @@
 
 /*
  WrittenBy : Himanshu Srivastava
- Problem : Three Sum
+ Problem : Three Sum closest 
  TimeComplexity : O(n*n)
 
  */
