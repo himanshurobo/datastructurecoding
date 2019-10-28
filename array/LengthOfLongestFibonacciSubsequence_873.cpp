@@ -38,7 +38,11 @@ TimeComplexity : O(n)
  
 */
 
+#include<iostream>
+#include <vector>
+#include<bits/stdc++.h>
 
+using namespace std;
 
 class Solution {
 public:
@@ -52,7 +56,7 @@ public:
     		for (int i = 0; i < j; i++)
     			if (m.find(A[j]-A[i]) != m.end() and m[A[j] - A[i]] < i){
                     dp[i][j] = max(dp[i][j], dp[m[A[j] - A[i]]][i] + 1);
-                    // cout<<i<<"->"<<j<<" : "<<dp[i][j]<<endl;
+                    cout<<i<<"->"<<j<<" : "<<dp[i][j]<<endl;
                 }
     				
     	int ans = 0;
@@ -77,7 +81,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{1,1,2,5,3,6,4};
 
     cout<<(sol.lenLongestFibSubseq(input));
 

@@ -22,6 +22,10 @@ TimeComplexity : O(n)
 
 */
 
+#include<iostream>
+#include <vector>
+#include<bits/stdc++.h> 
+using namespace std;
 
 
 class Solution {
@@ -30,17 +34,19 @@ public:
         
         for( int i = 0 ; i < nums.size(); i++){            
             int index = abs(nums[i]) -1;
-            nums[index] = nums[index] > 0 ? -nums[index]:nums[index];            
+            nums[index] = nums[index] > 0 ? -nums[index]:nums[index];
+            cout<<i<<"<---"<<index<<"-->>"<<nums[index]<<endl;         
         }
-        
-        // for( int i = 0 ; i < nums.size(); i++){
-        //  cout<< nums[i]<<"->";   
-        // }
+        cout<<endl;
+        for( int i = 0 ; i < nums.size(); i++){
+         cout<< nums[i]<<"->";   
+        }
         
         vector<int> res;
         for( int i = 0 ; i < nums.size(); i++){
          
             if( nums[i] > 0){
+                cout<<i<<"--->>"<<nums[i]<<endl;
                 res.push_back(i+1);
             }
         }
@@ -61,9 +67,9 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
-
-    cout<<(sol.findDisappearedNumbers(input));
+    vector<int>input{4,3,2,7,8,2,3,1};
+    displayInt(input);
+   displayInt(sol.findDisappearedNumbers(input));
 
     return 0;
 }

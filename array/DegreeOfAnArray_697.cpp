@@ -20,9 +20,15 @@ WrittenBy : Himanshu Srivastava
 Problem : Degree of an Array
 TimeComplexity : O(n)
 
-
+//////Check the solution 
 
 */
+
+#include<iostream>
+#include <vector>
+#include<bits/stdc++.h>
+
+using namespace std;
 
 
 class Solution {
@@ -34,10 +40,12 @@ public:
         int degree=0;
         for(auto it=mp.begin();it!=mp.end();it++) degree=max(degree,int(it->second.size()));
         int shortest=nums.size();
+        cout<<degree<<endl;
         for(auto it=mp.begin();it!=mp.end();it++)
         {
             if(it->second.size()==degree)
             {
+                cout<<it->second.back()<<"-->>"<<it->second[0]<<endl;
                 shortest=min(shortest,it->second.back()-it->second[0]+1);
             }
         }
@@ -59,7 +67,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{1,2,2,3,1,4,1,2};
 
     cout<<(sol.findShortestSubArray(input));
 

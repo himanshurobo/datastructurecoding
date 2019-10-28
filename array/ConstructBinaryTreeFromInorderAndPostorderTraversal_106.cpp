@@ -75,9 +75,11 @@ int main(){
 
     Solution sol;
 
-    vector<int> input{2, 2,7, 11, 15};
+    vector<int> inorder{9,3,15,20,7};
+    vector<int> postorder{9,15,7,20,3};
 
-    displayInt(sol.buildTree(input));
+
+    displayInt(sol.buildTree(inorder,postorder));
 
     return 0;
 }
