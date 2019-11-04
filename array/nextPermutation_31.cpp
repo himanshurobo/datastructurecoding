@@ -58,10 +58,10 @@ int main(){
 
     Solution sol;
 
-    vector<int> input{3,2,2,3};
+    vector<int> input{3,2,2,3,2};
 
-    sol.nextPermutation(input)
-    cout<<count<<endl;
+    sol.nextPermutation(input);
+    // cout<<count<<endl;
     displayInt(input);
 
     return 0;

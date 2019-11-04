@@ -1,9 +1,11 @@
 /*
 You have a list of words and a pattern, and you want to know which words in words matches the pattern.
 
-A word matches the pattern if there exists a permutation of letters p so that after replacing every letter x in the pattern with p(x), we get the desired word.
+A word matches the pattern if there exists a permutation of letters p so that after replacing every letter
+ x in the pattern with p(x), we get the desired word.
 
-(Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.)
+(Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another
+ letter, and no two letters map to the same letter.)
 
 Return a list of the words in words that match the given pattern. 
 
@@ -26,22 +28,25 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
+
 class Solution {
-    string toPattern(string word) {
-        map<char, char> M;
-        int curr = 97;
-        for(char& c: word) if(M.count(c) == 0) M[c] = (char) curr++;
-        for(int i = 0; i < word.length(); i++) word[i] = M[word[i]];
-        return word;
-  }
-public:
-    vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
-        
-        string p = toPattern(pattern);
+    public:
+    vector<string> findAndReplacePattern(vector<string> words, string p) {
         vector<string> res;
-        for(string& w: words) if(toPattern(w).compare(p) == 0) res.push_back(w);
+        for (string w : words) if (F(w) == F(p)) res.push_back(w);
         return res;
-        
+    }
+
+    string F(string w) {
+        unordered_map<char, int> m;
+        for (char c : w) if (!m.count(c)) m[c] = m.size();
+        for (int i = 0; i < w.length(); ++i) w[i] = 'a' + m[w[i]];
+        for( char c : w){
+            cout<<c;
+        }
+        cout<<endl;
+        return w;
     }
 };
 
@@ -56,9 +61,10 @@ int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
+    vector<string> words{"abc","deq","mee","aqq","dkd","ccc"}   ;
+    string pattern = "abb";
 
-    displayInt(sol.findAndReplacePattern(input));
+    displayInt(sol.findAndReplacePattern(words,pattern));
 
     return 0;
 }

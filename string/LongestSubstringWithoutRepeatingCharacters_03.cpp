@@ -29,27 +29,27 @@ TimeComplexity : O(n)
 class Solution {
 public:
     int lengthOfLongestSubstring(string ch) {
-         int max = 0;
-  int start = 0 ;
-  map<char,int> hash;
-  int lenght = ch.size();
-  
-  for( int i = 0 ; i < lenght; i++){
-    
-    if(hash.find(ch[i]) != hash.end() && hash.at(ch[i]) >= start){
-      start = hash.at(ch[i])+1;
+      int max = 0;
+      int start = 0 ;
+      map<char,int> hash;
+      int lenght = ch.size();
       
-    }
-      
-      hash[ch[i]] = i;
-    // }
-    
-    
-    
-    max = std::max(max,i-start +1);
-    
-    
-  }
+      for( int i = 0 ; i < lenght; i++){
+        
+        if(hash.find(ch[i]) != hash.end() && hash.at(ch[i]) >= start){
+          start = hash.at(ch[i])+1;
+          
+        }
+          
+          hash[ch[i]] = i;
+        // }
+        
+        
+        
+        max = std::max(max,i-start +1);
+        
+        
+      }
   
   
 //   map<char,int>::iterator it = hash.begin();

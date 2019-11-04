@@ -1,6 +1,7 @@
 /*
 
-Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
+Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist,
+ return -1.
 
 Examples:
 
@@ -17,6 +18,8 @@ TimeComplexity : O(n)
 
 
 */
+
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -38,7 +41,7 @@ public:
             count[s[fast]]++;
             while(slow < n && count[s[slow]] > 1 )
                 slow++;
-            // cout<<slow<<fast<<endl;
+            cout<<slow<<fast<<endl;
             if( slow >= n )
                 return -1;
             
@@ -65,9 +68,9 @@ int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
+    string input = "loveleetcode";
 
-    displayInt(sol.firstUniqChar(input));
+    cout<<sol.firstUniqChar(input);
 
     return 0;
 }

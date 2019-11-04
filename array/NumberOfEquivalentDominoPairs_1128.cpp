@@ -1,10 +1,13 @@
 /*
 
-Given a list of dominoes, dominoes[i] = [a, b] is equivalent to dominoes[j] = [c, d] if and only if either (a==c and b==d), or (a==d and b==c) - that is, one domino can be rotated to be equal to another domino.
+Given a list of dominoes, dominoes[i] = [a, b] is equivalent to dominoes[j] = [c, d] if and 
+only if either (a==c and b==d), or (a==d and b==c) - that is, one domino can be rotated to be equal 
+to another domino.
 
-Return the number of pairs (i, j) for which 0 <= i < j < dominoes.length, and dominoes[i] is equivalent to dominoes[j].
+Return the number of pairs (i, j) for which 0 <= i < j < dominoes.length, and dominoes[i] is equivalent 
+to dominoes[j].
 
- 
+
 
 Example 1:
 
@@ -24,6 +27,7 @@ TimeComplexity : O(n)
 
 */
 
+#include"header.hpp"
 
 class Solution {
 public:
@@ -56,8 +60,9 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
-
+    vector<vector<int>>input{{1,2},{2,1},{1,2},{5,6}};
+     vector<int> res(100);
+     displayInt(res);
     cout<<(sol.numEquivDominoPairs(input));
 
     return 0;

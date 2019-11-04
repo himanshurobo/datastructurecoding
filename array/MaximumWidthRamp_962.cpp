@@ -1,5 +1,6 @@
 /*
-Given an array A of integers, a ramp is a tuple (i, j) for which i < j and A[i] <= A[j].  The width of such a ramp is j - i.
+Given an array A of integers, a ramp is a tuple (i, j) for which i < j and A[i] <= A[j].  
+The width of such a ramp is j - i.
 
 Find the maximum width of a ramp in A.  If one doesn't exist, return 0.
 
@@ -32,6 +33,8 @@ TimeComplexity : O(n)
 
 */
 
+#include"header.hpp"
+
 
 class Solution {
 public:
@@ -42,11 +45,12 @@ public:
         
         for( int i =1; i < A.size();i++){
             
-            if(A[i] < A[s.top()]){
+            if(A[i] < A[s.top()]){  
                 s.push(i);
+                cout<<i<<" ";
             }
         }
-        
+        cout<<endl;
         
         int res = 0;
         int last = A.size()-1;
@@ -82,7 +86,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{9,8,1,0,1,9,4,0,4,1};
 
     cout<<(sol.maxWidthRamp(input));
 

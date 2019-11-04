@@ -5,7 +5,8 @@ Two strings S and T are special-equivalent if after any number of moves, S == T.
 
 A move consists of choosing two indices i and j with i % 2 == j % 2, and swapping S[i] with S[j].
 
-Now, a group of special-equivalent strings from A is a non-empty subset S of A such that any string not in S is not special-equivalent with any string in S.
+Now, a group of special-equivalent strings from A is a non-empty subset S of A such that any string not 
+in S is not special-equivalent with any string in S.
 
 Return the number of groups of special-equivalent strings from A.
 
@@ -39,6 +40,7 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -53,8 +55,10 @@ public:
         }
         sort (even.begin (), even.end());
         sort (odd.begin(), odd.end());
+        cout<<even<<" "<<odd<<endl;
         s.insert(even +  odd);
     }
+
     return s.size (); //Time: O(n * w log w)
         
     }
@@ -71,9 +75,9 @@ int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
+    vector<string>input{"a","b","c","a","c","c"};
 
-    displayInt(sol.numSpecialEquivGroups(input));
+    cout<<sol.numSpecialEquivGroups(input);
 
     return 0;
 }
