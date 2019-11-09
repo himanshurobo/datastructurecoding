@@ -17,6 +17,8 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
+
 class Solution {
 public:
     int arrayPairSum(vector<int>& nums) {
