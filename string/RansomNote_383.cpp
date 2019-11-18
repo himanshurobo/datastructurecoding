@@ -21,6 +21,9 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
+
+
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
@@ -47,9 +50,10 @@ int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
+    string ransomNote = "aa";
+    string magazine = "aab";
 
-    displayInt(sol.canConstruct(input));
+    cout<<sol.canConstruct(ransomNote,magazine);
 
     return 0;
 }

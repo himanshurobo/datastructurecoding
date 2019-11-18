@@ -37,7 +37,7 @@ class Solution {
     }
 public:
     string complexNumberMultiply(string a, string b) {
-         pair<int, int> av = parse(a);
+        pair<int, int> av = parse(a);
         pair<int, int> bv = parse(b);
         int ra = av.first * bv.first - av.second * bv.second;
         int rb = av.first * bv.second + av.second * bv.first;

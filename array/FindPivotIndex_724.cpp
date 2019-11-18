@@ -14,7 +14,8 @@ Input:
 nums = [1, 7, 3, 6, 5, 6]
 Output: 3
 Explanation: 
-The sum of the numbers to the left of index 3 (nums[3] = 6) is equal to the sum of numbers to the right of index 3.
+The sum of the numbers to the left of index 3 (nums[3] = 6) is equal to the sum of numbers to the right of 
+index 3.
 Also, 3 is the first index where this occurs.
  
 
@@ -34,11 +35,11 @@ TimeComplexity : O(n)
 
 */
 
-
+#include"../header.hpp"
 
 class Solution {
 public:
-    int pivotIndex(vector<int>& nums) {
+    int pivotIndex1(vector<int>& nums) {
         int total = 0;
         for (int num : nums) total += num;
         int sum = 0;
@@ -50,6 +51,29 @@ public:
         
         return -1;
     }
+
+     int pivotIndex(vector<int>& nums) {
+
+        int l = 0 , r = nums.size()-1;
+        int leftSum = nums[l] ;
+        int rightSum = nums[r];
+         while(l < r){
+ 
+             if( leftSum > rightSum){
+                rightSum +=nums[--r];
+             }else if ( leftSum < rightSum) {
+                 leftSum += nums[++l];
+             }else{
+                //  cout<<l;
+                 return l+1;
+             }
+                         cout<<leftSum<<"--"<<rightSum<<"####"<<l<<"---"<<r<<endl;
+         }
+
+         return -1;
+     
+     }
+
 };
 
 void displayInt(vector<int>input){
@@ -63,7 +87,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{1, 2,5, 3, 6, 5, 6,};
 
     cout<<(sol.pivotIndex(input));
 

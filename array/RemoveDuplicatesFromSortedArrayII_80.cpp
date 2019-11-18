@@ -47,15 +47,18 @@ TimeComplexity : O(n)
 
 */
 
-
+#include"../header.hpp"
 
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
        int i = 0;
         for (int n : nums)
-            if (i < 2 || n > nums[i-2])
+            if (i < 2 || n > nums[i-2]){
                 nums[i++] = n;
+                cout<<i<<" "<<nums[i]<<"<"<<n<<endl;
+            }
+                
         return i;
 
     }
@@ -76,7 +79,7 @@ int main(){
 
     vector<int> input{0,0,1,1,1,1,2,3,3};
     vector<vector<int>> res;
-    displayInt(sol.removeDuplicates(input));
+    cout<<sol.removeDuplicates(input);
 
     return 0;
 }

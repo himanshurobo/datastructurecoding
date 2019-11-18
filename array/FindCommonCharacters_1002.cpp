@@ -33,6 +33,8 @@ TimeComplexity : O(n)
 */
 
 
+#include"../header.hpp"
+
 class Solution {
 public:
     
@@ -54,9 +56,10 @@ public:
             cout<<cnt1[i];
         for (auto i = 0; i < 26; ++i) cnt[i] = min(cnt[i], cnt1[i]);
         cout<<"$"<<endl;
-        for( auto i = 0 ; i < 26;i++)
-            cout<<cnt[i];
+
     }
+    for( auto i = 0 ; i < 26;i++)
+        cout<<cnt[i];
     for (auto i = 0; i < 26; ++i)
         for (auto j = 0; j < cnt[i]; ++j) res.push_back(string(1, i + 'a'));
         
@@ -66,9 +69,9 @@ public:
     }
 };
 
-void displayInt(vector<int>input){
+void displayInt(vector<string>input){
     cout<<"Displaying size "<<input.size()<<endl;
-    for (std::vector<int>::size_type i = 0; i < input.size(); i++) {
+    for (std::vector<string>::size_type i = 0; i < input.size(); i++) {
         std::cout << input.at(i) << ' ';
     }
 }
@@ -77,9 +80,9 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<string>input{"cool","lock","cook"};
 
-    cout<<(sol.commonChars(input));
+    displayInt(sol.commonChars(input));
 
     return 0;
 }

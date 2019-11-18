@@ -26,6 +26,8 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
+
 class Solution {
 public:
     int lengthOfLongestSubstring(string ch) {
@@ -52,11 +54,11 @@ public:
       }
   
   
-//   map<char,int>::iterator it = hash.begin();
+  map<char,int>::iterator it = hash.begin();
   
-//   for( it = hash.begin(); it != hash.end(); it++){
-//     cout<<"first : "<<(*it).first<<" Second : "<<(*it).second<<endl;
-//   }
+  for( it = hash.begin(); it != hash.end(); it++){
+    cout<<"first : "<<(*it).first<<" Second : "<<(*it).second<<endl;
+  }
 
   
   return max;
@@ -78,9 +80,9 @@ int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
+    string input = "abcabcbb";
 
-    cout<<(sol.lengthOfLongestSubstring(input));
+    cout<<sol.lengthOfLongestSubstring(input);
 
     return 0;
 }

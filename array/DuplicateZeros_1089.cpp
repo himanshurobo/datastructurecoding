@@ -32,20 +32,22 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
 
 class Solution {
 public:
     void duplicateZeros(vector<int>& arr) {
         
         int n = arr.size(), j = n + count(arr.begin(), arr.end(), 0);
-        // cout<<j<<endl;
+        cout<<j<<" --."<<count(arr.begin(), arr.end(), 0)<<endl;
         for (int i = n - 1; i >= 0; --i) {
+            cout<<j<<" $$$$$$$$ "<<i<<endl;
             if (--j < n){
-                // cout<<j<<i<<"**"<<endl;
-                arr[j] = arr[i];
+                cout<<j<<i<<"**"<<n<<endl;
+                arr[j] = arr[i];    
             }
             if (arr[i] == 0 && --j < n){
-                // cout<<j<<i<<"++"<<endl;
+                cout<<j<<i<<"++"<<endl;
                 arr[j] = 0;
             }
                 
@@ -65,9 +67,10 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{7,1,0,5,3,0,6,1,4};
 
-    cout<<(sol.duplicateZeros(input));
+    sol.duplicateZeros(input);
+    displayInt(input);
 
     return 0;
 }

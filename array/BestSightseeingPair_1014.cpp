@@ -29,6 +29,7 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -38,7 +39,7 @@ public:
         
         res = max(res, A[j] + max_i);
         max_i = max(max_i, A[j]);
-        // cout<<j<<" "<<res<<" "<<A[j]<<" "<<max_i<<endl;
+        cout<<j<<" "<<res<<" "<<A[j]<<" "<<max_i<<endl;
       }
   return res;
     }
@@ -56,7 +57,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{8,1,5,2,6};
 
     cout<<(sol.maxScoreSightseeingPair(input));
 

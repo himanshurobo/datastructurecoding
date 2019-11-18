@@ -33,7 +33,7 @@ TimeComplexity : O(n)
 
 */
 
-#include"header.hpp"
+#include"../header.hpp"
 
 
 class Solution {

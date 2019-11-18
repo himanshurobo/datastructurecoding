@@ -44,7 +44,7 @@ public:
         for (int reach = 0; i < n && i <= reach; ++i){
 
             reach = max(i + nums[i], reach);
-            cout<<reach<<" ";
+            // cout<<reach<<" ";
         }
         return i == n;
 
@@ -64,9 +64,9 @@ int main(){
 
     Solution sol;
 
-    vector<int> input{2,3,1,1,4};
+    vector<int> input{3,2,2,0,4};
     vector<vector<int>> res;
-    int jump = sol.trap(input);
+    int jump = sol.canJump(input);
     cout<<jump<<endl;
 
     return 0;

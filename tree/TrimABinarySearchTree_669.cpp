@@ -53,6 +53,9 @@ TimeComplexity : O(n)
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+ #include"../header.hpp"
+
 class Solution {
 public:
     TreeNode* trimBST(TreeNode* root, int L, int R) {

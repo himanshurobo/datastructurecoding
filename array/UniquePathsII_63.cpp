@@ -75,7 +75,11 @@ int main(){
 
     Solution sol;
 
-    vector<vector<int>> obstacleGrid;
+    vector<vector<int>> obstacleGrid = {
+  {0,0,0},
+  {0,1,0},
+  {0,0,0}
+  };
     int path = sol.uniquePathsWithObstacles(obstacleGrid);
     cout<<path<<endl;
 

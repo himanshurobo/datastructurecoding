@@ -18,6 +18,7 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -91,7 +92,51 @@ public:
         
         return s.substr((aResultCenter - aResultLength) / 2, aResultLength);
     }
-    
+
+
+
+    string longestPalindrome1(string s) {
+        int n = s.size();
+        int newN = 2*n+1;
+        char T[newN];
+        int index = 0;
+        for( int i = 0 ; i < newN;i++){
+            T[i++] = '#';
+            T[i] =  s[index++];
+        }
+
+        vector<int> p(newN,0);
+
+        int c = 0 , r = 0;
+
+        for( int i = 1 ; i < newN;i++){
+            int mirror = 2*c -i;
+
+            if( i < r){
+                p[i] = min(r-i,p[mirror]);
+            }
+
+            while(T[i + ( 1 + p[i])] == T[i - ( 1 + p[i])]){
+                p[i]++;
+            }
+
+            if( i + p[i] > r){
+                c = i;
+                r = i +p[i];
+            }
+
+        }
+
+
+        int maxValue = 0;
+        for( int i = 0 ; i < p.size();i++){
+            maxValue = max(maxValue,p[i]);
+        }
+
+        cout<<maxValue;
+        return "ABC";
+
+    }
     
  
 };
@@ -110,9 +155,9 @@ int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
+    string input = "abababaa";
 
-    displayInt(sol.lengthOfLongestSubstring(input));
+    sol.longestPalindrome(input);
 
     return 0;
 }

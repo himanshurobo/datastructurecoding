@@ -7,7 +7,7 @@ is "c" and its frequency is 2.
 Now, given string arrays queries and words, return an integer array answer, 
 where each answer[i] is the number of words such that f(queries[i]) < f(W), where W is a word in words.
 
- 
+
 
 Example 1:
 
@@ -18,7 +18,8 @@ Example 2:
 
 Input: queries = ["bbb","cc"], words = ["a","aa","aaa","aaaa"]
 Output: [1,2]
-Explanation: On the first query only f("bbb") < f("aaaa"). On the second query both f("aaa") and f("aaaa") are both > f("cc").
+Explanation: On the first query only f("bbb") < f("aaaa"). On the second query both f("aaa") and f("aaaa") 
+are both > f("cc").
  
 
 Constraints:

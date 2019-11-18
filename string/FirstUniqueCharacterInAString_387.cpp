@@ -68,7 +68,7 @@ int main(){
 
     Solution sol;
 
-    string input = "loveleetcode";
+    string input = "loveoleetcde";
 
     cout<<sol.firstUniqChar(input);
 

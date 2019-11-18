@@ -39,7 +39,7 @@ TimeComplexity : O(n)
 */
 
 
-
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -64,11 +64,11 @@ public:
         sumB += e;
     
     int delta = (sumA - sumB) / 2;
-    
+    cout<<delta<<"--"<<endl;
     set<int> searchA;
     for (auto x : A)
     {
-        //cout << x << endl;
+        cout << x << endl;
         searchA.insert(x);
     }
     
@@ -76,9 +76,9 @@ public:
     //cout << endl;
     for (auto y : B)    
     {
-        //cout << y << setw(5) << delta + y << endl;
+        cout << y <<"-->>"<< delta + y << endl;
         if (searchA.count(delta + y) > 0)
-        {
+        {   cout<<"COUNT :"<<delta + y<<endl;
             return vector<int>{delta + y, y};
         }
     }
@@ -101,9 +101,10 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>A{1,2,5};
+    vector<int>B{2,4};
 
-    cout<<(sol.fairCandySwap(input));
+    displayInt(sol.fairCandySwap(A,B));
 
     return 0;
 }

@@ -40,11 +40,7 @@ TimeComplexity : O(logn)
 
 
 
-#include<iostream>
-#include <vector>
-#include<bits/stdc++.h>
-
-using namespace std;
+#include"../header.hpp"
 
 
 
@@ -103,7 +99,7 @@ int main(){
     Solution sol;
 
     vector<int> input{2,3,6,7};
-    int target = 8
+    int target = 8;
     vector<vector<int>> res;
     res = sol.combinationSum(input,target);
     displayInt(res);

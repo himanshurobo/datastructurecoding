@@ -34,6 +34,7 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -41,8 +42,8 @@ public:
         int res = 0;
         vector<int> m(60);
         for (auto t : time) {
-            // int a = ( (60 - t % 60));
-            // cout<<a<<endl;
+            int a = ( (60 - t % 60)%60);
+            cout<<a<<endl;
             res += m[(60 - t % 60) % 60];
             ++m[t % 60];
         }
@@ -63,7 +64,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{30,20,150,100,40};
 
     cout<<(sol.numPairsDivisibleBy60(input));
 

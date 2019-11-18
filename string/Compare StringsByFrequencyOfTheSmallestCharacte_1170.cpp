@@ -22,7 +22,7 @@ Explanation: On the first query only f("bbb") < f("aaaa"). On the second query b
 
 
 WrittenBy : Himanshu Srivastava
-Problem : Compare Strings by Frequency of the Smallest Characte
+Problem : Compare Strings by Frequency of the Smallest Character
 TimeComplexity : O(n)
 */
 

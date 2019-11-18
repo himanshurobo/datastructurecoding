@@ -69,7 +69,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{1,2,2,3,1,4,1,2};
+    vector<int>input{1, 2, 2, 3, 1};
 
     cout<<(sol.findShortestSubArray(input));
 

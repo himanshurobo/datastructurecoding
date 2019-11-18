@@ -11,7 +11,7 @@ Example 1:
 Input: S = "rabbbit", T = "rabbit"
 Output: 3
 Explanation:
-
+    
 As shown below, there are 3 ways you can generate "rabbit" from S.
 (The caret symbol ^ means the chosen letters)
 
@@ -47,7 +47,7 @@ TimeComplexity : O(n)
 
 */
 
-
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -63,6 +63,13 @@ public:
         for (int i = 1; i <= m; i++) {
             path[i][j] = path[i][j-1] + (T[i-1] == S[j-1] ? path[i-1][j-1] : 0);
         }
+    }
+
+    for( int i = 0 ; i < path.size();i++){
+        for( int j = 0 ; j < path[i].size();j++){
+            cout<<path[i][j]<<" ";
+        }
+        cout<<endl;
     }
     
     return path[m][n];
@@ -81,9 +88,10 @@ int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
 
-    displayInt(sol.numDistinct(input));
+    string S = "rabbbit", T = "rabbit";
+
+    cout<<sol.numDistinct(S,T);
 
     return 0;
 }
