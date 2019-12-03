@@ -25,12 +25,15 @@ TimeComplexity : O(n)
 
 */
 
+#include"../header.hpp"
+
 class Solution {
 public:
     string gcdOfStrings(string str1, string str2) {
         if (str1.size() < str2.size()) return gcdOfStrings(str2, str1);
         if (str2.empty()) return str1;
         if (str1.substr(0, str2.size()) != str2) return "";
+        cout<<str1.substr(str2.size())<<endl;
         return gcdOfStrings(str1.substr(str2.size()), str2);
         
     }
@@ -48,9 +51,10 @@ int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
+    string str1 = "ababab";
+    string str2 = "abab";
 
-    displayInt(sol.gcdOfStrings(input));
+    cout<<sol.gcdOfStrings(str1,str2);
 
     return 0;
 }

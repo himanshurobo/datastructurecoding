@@ -47,7 +47,7 @@ string numToword(int num, string postFix){
 
 
 }
-
+ 
 string numToWords( int nums){
 
     string res = numToword(nums % 100," ");

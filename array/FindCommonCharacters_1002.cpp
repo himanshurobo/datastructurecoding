@@ -56,10 +56,11 @@ public:
             cout<<cnt1[i];
         for (auto i = 0; i < 26; ++i) cnt[i] = min(cnt[i], cnt1[i]);
         cout<<"$"<<endl;
-
+        for( auto i = 0 ; i < 26;i++)
+            cout<<cnt[i];
+        cout<<endl;
     }
-    for( auto i = 0 ; i < 26;i++)
-        cout<<cnt[i];
+
     for (auto i = 0; i < 26; ++i)
         for (auto j = 0; j < cnt[i]; ++j) res.push_back(string(1, i + 'a'));
         

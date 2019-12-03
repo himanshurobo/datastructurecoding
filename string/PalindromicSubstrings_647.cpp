@@ -70,4 +70,4 @@ int main(){
     displayInt(sol.countSubstrings(input));
 
     return 0;
-}
+} 

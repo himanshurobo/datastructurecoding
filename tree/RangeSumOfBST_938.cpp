@@ -38,9 +38,10 @@ TimeComplexity : O(n)
  * };
  */
 class Solution {
+    int sum_ = 0;
      
 public:
-    int rangeSumBST(TreeNode* root, int L, int R) {
+    int rangeSumBST1(TreeNode* root, int L, int R) {
         
         if( root == NULL ){
             return 0;
@@ -59,5 +60,25 @@ public:
         }        
         
         return sum;
+    }
+
+      int rangeSumBST(TreeNode* root, int L, int R) {
+        
+        if( root == NULL ){
+            return 0;
+        }
+
+        if( root->val >= L && root->val <= R){
+            sum_ += root->val;
+        }
+        
+        rangeSumBST(root->left, L,R) ;
+        
+        
+        rangeSumBST(root->right, L,R) ;
+                
+        
+        return sum;
+    
     }
 };
