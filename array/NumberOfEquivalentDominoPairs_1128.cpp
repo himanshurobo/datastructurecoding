@@ -27,7 +27,7 @@ TimeComplexity : O(n)
 
 */
 
-#include"header.hpp"
+#include "../header.hpp"
 
 class Solution {
 public:
@@ -45,6 +45,7 @@ public:
         
         return count;
         
+        
     }
 };
 
@@ -61,8 +62,8 @@ int main(){
     Solution sol;
 
     vector<vector<int>>input{{1,2},{2,1},{1,2},{5,6}};
-     vector<int> res(100);
-     displayInt(res);
+    //  vector<int> res(100);
+    //  displayInt(res);
     cout<<(sol.numEquivDominoPairs(input));
 
     return 0;

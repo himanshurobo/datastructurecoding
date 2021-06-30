@@ -12,8 +12,12 @@ inverting [0, 1, 1] results in [1, 0, 0].
 
 Example 1:
 
-Input: [[1,1,0],[1,0,1],[0,0,0]]
-Output: [[1,0,0],[0,1,0],[1,1,1]]
+Input: [[1,1,0]
+       ,[1,0,1]
+       ,[0,0,0]]
+Output: [[1,0,0]
+        ,[0,1,0]
+        ,[1,1,1]]
 Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].
 Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
 Example 2:

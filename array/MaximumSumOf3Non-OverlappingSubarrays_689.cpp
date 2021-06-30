@@ -31,7 +31,77 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
-    vector<int> maxSumOfThreeSubarrays(vector<int>& nums, int k) {
+
+ vector<int> maxSumOfThreeSubarrays(vector<int>& nums, int k) {
+        
+        int n = nums.size();
+        
+        vector<int> sdSum(n);
+        int sum =0;
+        for( int i = 0 ; i < n;i++){
+            
+            sum +=nums[i];
+            
+            if( i >= k){
+                sum -= nums[i-k];
+            }
+            
+            sdSum[i] = sum;
+                
+        }
+        
+        
+        vector<int> leftMax(n);
+        int largestIndex = 0;
+        for( int i = 0 ; i < n ;i++){
+            
+            if( sdSum[i] > sdSum[largestIndex]){
+                largestIndex = i;                
+            }
+            
+            leftMax[i] = largestIndex;            
+        }
+        
+        
+        vector<int> rightMax(n);
+        largestIndex= n-1;
+        for( int i = n-1; i>=0;i--){
+            
+            if(sdSum[i] >= sdSum[largestIndex]){
+                largestIndex = i;
+            }
+            
+            rightMax[i] = largestIndex;
+        }
+        
+        
+        int largestSum = -1;
+        
+        vector<int> res(3);
+        
+        for( int mid = 2*k-1; mid < n - k; mid++){
+            
+            int left = leftMax[mid -k] ;
+            int right = rightMax[mid + k];
+            
+            sum = sdSum[left] + sdSum[mid] + sdSum[right];
+            
+            if( sum > largestSum){
+                largestSum = sum;
+                res[0] = left - k +1;
+                res[1] = mid - k +1 ;
+                res[2] = right -k +1;
+            }
+        }
+        
+        
+        return res;
+        
+        
+    }
+
+
+    vector<int> maxSumOfThreeSubarrays1(vector<int>& nums, int k) {
         int n = nums.size(), maxsum = 0;
         vector<int> sum = {0}, posLeft(n, 0), posRight(n, n-k), ans(3, 0);
         for (int i:nums) sum.push_back(sum.back()+i);

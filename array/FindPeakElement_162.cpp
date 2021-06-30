@@ -27,6 +27,13 @@ TimeComplexity : O(logn)
 
 */
 
+
+#include<iostream>
+#include <vector>
+#include<bits/stdc++.h> 
+using namespace std;
+
+
 class Solution {
 public:
     int findPeakElement(vector<int>& nums) {
@@ -45,6 +52,7 @@ public:
         {
             int mid1 = (low+high)/2;
             int mid2 = mid1+1;
+            std::cout<<num[mid1]<<"<-->"<<num[mid2]<<endl;
             if(num[mid1] > num[mid2])
                 return Helper(num, low, mid1);
             else
@@ -57,7 +65,7 @@ public:
 
 
 void displayInt(vector<int>input){
-    cout<<"Displaying size "<<input.size()<<endl;
+    std::cout<<"Displaying size "<<input.size()<<endl;
     for (std::vector<int>::size_type i = 0; i < input.size(); i++) {
         std::cout << input.at(i) << ' ';
     }
@@ -67,8 +75,8 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{1,2,1,3,5,6,4};
 
-    cout<<(sol.findPeakElement(input));
+    std::cout<<(sol.findPeakElement(input));
 
 }

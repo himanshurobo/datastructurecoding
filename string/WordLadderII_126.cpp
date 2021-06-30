@@ -25,6 +25,9 @@ Output:
   ["hit","hot","lot","log","cog"]
 ]
 Example 2:
+x-special/nautilus-clipboard
+copy
+file://
 
 Input:
 beginWord = "hit"

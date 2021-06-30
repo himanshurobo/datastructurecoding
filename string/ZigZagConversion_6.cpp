@@ -32,8 +32,14 @@ TimeComplexity : O(n)
 
 */
 
-
+#include "../header.hpp"
 class Solution {
+    void displaystring(vector<string>input){
+        // cout<<"Displaying size "<<input.size()<<endl;
+        for (std::vector<string>::size_type i = 0; i < input.size(); i++) {
+            std::cout << input.at(i) << ' ';
+    }
+}
 public:
     string convert(string s, int numRows) {
         if(numRows <= 1) return s;
@@ -43,7 +49,8 @@ public:
             if(row == 0) step = 1;
             if(row == numRows - 1) step = -1;
             row += step;
-            
+            std::cout<<i<<" "<<row<<" "<<endl;
+            displaystring(db);
         }
         string ret;
         for(auto d:db) ret+=d;
@@ -53,20 +60,15 @@ public:
 };
 
 
-void displayInt(vector<string>input){
-    cout<<"Displaying size "<<input.size()<<endl;
-    for (std::vector<string>::size_type i = 0; i < input.size(); i++) {
-        std::cout << input.at(i) << ' ';
-    }
-}
+
 
 int main(){
 
     Solution sol;
 
-    vector<string>input{"abcabcbb"}
+    string input = "PAYPALISHIRING";
 
-    displayInt(sol.convert(input));
+    sol.convert(input,4);
 
     return 0;
 }

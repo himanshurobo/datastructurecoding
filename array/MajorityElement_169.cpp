@@ -14,10 +14,12 @@ Input: [2,2,1,1,1,2,2]
 Output: 2
 
 WrittenBy : Himanshu Srivastava
-Problem : . Majority Element
+Problem : . Majority Element ( Boyer-Moore Voting Algorithm )
 TimeComplexity : O(n)
 
 */
+
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -51,7 +53,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{2,2,2,2,1,1};
 
     cout<<(sol.majorityElement(input));
 

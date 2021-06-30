@@ -43,7 +43,7 @@ public:
         vector<int> m(60);
         for (auto t : time) {
             int a = ( (60 - t % 60)%60);
-            cout<<a<<endl;
+            cout<<t<<"-->"<<a<<endl;
             res += m[(60 - t % 60) % 60];
             ++m[t % 60];
         }

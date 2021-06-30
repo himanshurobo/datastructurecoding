@@ -20,7 +20,7 @@ Given n = 3, there are a total of 5 unique BST's:
 
 WrittenBy : Himanshu Srivastava
 Problem : Unique Binary Search Trees
-TimeComplexity : O(n)
+TimeComplexity : O(n*n)
 */
 
 

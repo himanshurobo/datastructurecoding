@@ -30,7 +30,14 @@ Example 2:
 
 
 
-Input: [[".",".",".",".",".",".",".","."],[".","p","p","p","p","p",".","."],[".","p","p","B","p","p",".","."],[".","p","B","R","B","p",".","."],[".","p","p","B","p","p",".","."],[".","p","p","p","p","p",".","."],[".",".",".",".",".",".",".","."],[".",".",".",".",".",".",".","."]]
+Input: [[".",".",".",".",".",".",".","."],
+        [".","p","p","p","p","p",".","."],
+        [".","p","p","B","p","p",".","."],
+        [".","p","B","R","B","p",".","."],
+        [".","p","p","B","p","p",".","."],
+        [".","p","p","p","p","p",".","."],
+        [".",".",".",".",".",".",".","."],
+        [".",".",".",".",".",".",".","."]]
 Output: 0
 Explanation: 
 Bishops are blocking the rook to capture any pawn.
@@ -52,7 +59,7 @@ There is exactly one cell with board[i][j] == 'R'
 
 WrittenBy : Himanshu Srivastava
 Problem : Available Captures for Rook
-TimeComplexity : O(n)
+TimeComplexity : O(m*n)
 
 */
 

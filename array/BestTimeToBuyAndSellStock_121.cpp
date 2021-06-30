@@ -25,7 +25,7 @@ TimeComplexity : O(n)
 
 */
 
-
+#include"../header.hpp"
 
 class Solution {
 public:
@@ -55,7 +55,7 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{7,1,5,3,6,4};
 
     cout<<(sol.maxProfit(input));
 

@@ -35,23 +35,54 @@ TimeComplexity : O(n)
 
 */
 
-
+#include"../header.hpp"
+#include<math.h>
 
 class Solution {
 public:
-    int maxDistToClosest(vector<int>& seats) {
+    int maxDistToClosest1(vector<int>& seats) {
         
         int res = 0, n = seats.size(), last = -1;
         for (int i = 0; i < n; ++i) {
             if (seats[i] == 1) {
                 res = last < 0 ? i : max(res, (i - last) / 2);
                 last = i;
+                std::cout<<"i : "<<i<<" res : "<<res<<" last : "<<last<<endl;
             }
         }
         res = max(res, n - last - 1);
+        cout<<"RESULT : "<<res<<endl;
         return res;
         
     }
+
+    int maxDistToClosest(vector<int>& seats) {
+        int N = seats.size();
+        int K = 0; //current longest group of empty seats
+        int ans = 0;
+
+        for (int i = 0; i < N; ++i) {
+            if (seats[i] == 1) {
+                K = 0;
+            } else {
+                K++;
+                ans = max(ans, (K + 1) / 2);
+            }
+        }
+
+        for (int i = 0; i < N; ++i)  if (seats[i] == 1) {
+            ans = max(ans, i);
+            break;
+        }
+
+        for (int i = N-1; i >= 0; --i)  if (seats[i] == 1) {
+            ans = max(ans, N - 1 - i);
+            break;
+        }
+
+        return ans;
+    }
+
 };
 
 
@@ -66,9 +97,9 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{0,0,0,0,1};
 
-    cout<<(sol.maxDistToClosest(input));
+    std::cout<<(sol.maxDistToClosest(input));
 
     return 0;
 }

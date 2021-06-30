@@ -37,12 +37,13 @@ public:
         for( int i = 0 ; i < nums.size(); i++){            
             int index = abs(nums[i]) -1;
             nums[index] = nums[index] > 0 ? -nums[index]:nums[index];
-            cout<<i<<"<---"<<index<<"-->>"<<nums[index]<<endl;         
+            // cout<<i<<"<---"<<index<<"-->>"<<nums[index]<<endl;   
+              cout<<endl;
+            for( int i = 0 ; i < nums.size(); i++){
+             cout<< nums[i]<<"->";   
+            }      
         }
-        cout<<endl;
-        for( int i = 0 ; i < nums.size(); i++){
-         cout<< nums[i]<<"->";   
-        }
+      
         
         vector<int> res;
         for( int i = 0 ; i < nums.size(); i++){

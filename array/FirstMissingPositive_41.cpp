@@ -38,13 +38,14 @@ public:
 
         for(int i = 0; i < n; ++ i){
             while(A[i] > 0 && A[i] <= n && A[A[i] - 1] != A[i]){
-                cout<<i<<" "<<A[A[i] - 1]<<"<-->"<<A[i]<<endl;
+                // cout<<i<<" "<<A[A[i] - 1]<<"<-->"<<A[i]<<endl;
                 swap(A[i], A[A[i] - 1]);
 
             }
+    
         }
 
-                       for(int i = 0; i < n; ++ i){
+                                       for(int i = 0; i < n; ++ i){
                     cout<<A[i]<<" ";
                 }
 
@@ -56,6 +57,30 @@ public:
         return n + 1;
 
     }
+
+int firstMissingPositive1(vector<int>& A) { 
+
+    int numSize = A.size();
+    // int i =0;
+    for ( int i = 0 ; i < numSize; i++){
+        int index = abs(A[i]) - 1;
+        cout<<index<<" "<<A[index]<<" "<<A[i]<<endl;
+        A[index] = A[index] > 0 ? -A[index] : A[index];
+        // cout<<A[index]<<" ";
+    }
+
+    for ( int i = 0 ; i < numSize ; i++){
+        
+        if ( A[i] > 0){
+            return i+1;
+        }
+    }
+
+    return -1;
+
+}
+
+
 
 };
 
@@ -71,10 +96,10 @@ int main(){
 
     Solution sol;
 
-    vector<int> input{10,1,2,7,6,1,5};
+    vector<int> input{3,4,-1,1};
     vector<vector<int>> res;
     int missing = sol.firstMissingPositive(input);
-    cout<<missing<<endl;
+    cout<<"Missing -->"<<missing<<endl;
 
     return 0;
 }

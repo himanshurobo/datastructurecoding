@@ -101,8 +101,8 @@ int main(){
 
     Solution sol;
 
-    vector<int>A{1,2,5};
-    vector<int>B{2,4};
+    vector<int>A{1,1};
+    vector<int>B{2,2};
 
     displayInt(sol.fairCandySwap(A,B));
 

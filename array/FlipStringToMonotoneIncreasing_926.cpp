@@ -59,7 +59,7 @@ public:
 
 
 void displayInt(vector<int>input){
-    cout<<"Displaying size "<<input.size()<<endl;
+    std::cout<<"Displaying size "<<input.size()<<endl;
     for (std::vector<int>::size_type i = 0; i < input.size(); i++) {
         std::cout << input.at(i) << ' ';
     }
@@ -69,9 +69,9 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    string s = "010110"
 
-    cout<<(sol.minFlipsMonoIncr(input));
+    std::out<<(sol.minFlipsMonoIncr(s));
 
     return 0;
 }

@@ -26,7 +26,7 @@ TimeComplexity : O(n)
 
 */
 
-
+#include "../header.hpp"
 
 class Solution {
 public:
@@ -43,6 +43,7 @@ public:
             // cout<<rest<<endl;
             res += rest2cnt[rest];
             ++rest2cnt[rest];
+            cout<<"i : "<<i<<" Sum : "<<prefixSum<<" rest : "<<rest<<" res :"<<res<<" res2cnt :"<<rest2cnt[rest]<<endl;
         }
         return res;
     }
@@ -60,9 +61,9 @@ int main(){
 
     Solution sol;
 
-    vector<int>input{7,1,5,3,6,4}
+    vector<int>input{4,5,0,-2,-3,1};
 
-    cout<<(sol.subarraysDivByK(input));
+    cout<<(sol.subarraysDivByK(input,5));
 
     return 0;
 }

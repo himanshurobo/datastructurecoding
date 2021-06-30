@@ -47,7 +47,7 @@ public:
                 plusOne = 0 ;
             }else{
                 digits[i] = 0;
-                plusOne = 1;
+                plusOne = 1;    
             }
 
 
