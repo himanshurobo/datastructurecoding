@@ -32,11 +32,53 @@ The median is (2 + 3)/2 = 2.5
 
 class Solution {
 public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+
+  double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+
+        int N1 = nums1.size();
+        int N2 = nums2.size();
+        
+        if ( N1 > N2 ){
+            return findMedianSortedArrays(nums2,nums1);
+        }
+
+        int low = 0 ;
+        int high = N1;
+
+        while( low <= high ){
+            int partitionX = ( low + high )/2;
+            int partitionY = ( N1 + N2 + 1 )/2 - partitionX;
+
+            int maxLeftX = ( partitionX == 0 ) ? INT_MIN : nums1[partitionX-1];
+            int minRightX = (partitionX == N1 ) ? INT_MAX : nums1[partitionX];
+
+            int maxLeftY = ( partitionY == 0 ) ? INT_MIN : nums2[partitionY-1];
+            int minRightY = ( partitionY == N2 ) ? INT_MAX : nums2[partitionY];
+
+            if ( maxLeftX <= minRightY && maxLeftY <= minRightX ){
+
+                if( (N1 + N2 ) % 2 == 0){
+                    return (max(maxLeftX,maxLeftY) + min( minRightX,minRightY) )/2.0;
+                }else{
+                    return ( max(maxLeftX,maxLeftY));
+                }
+            }else if ( maxLeftX > minRightY ){
+                high = partitionX - 1; 
+            }else {
+                low = partitionX + 1;
+            }
+
+        }
+
+        return -1.0;
+
+    }
+
+    double findMedianSortedArrays1(vector<int>& nums1, vector<int>& nums2) {
         
     int N1 = nums1.size();
     int N2 = nums2.size();
-    if (N1 < N2) return findMedianSortedArrays(nums2, nums1);	// Make sure A2 is the shorter one.
+    if (N1 < N2) return findMedianSortedArrays1(nums2, nums1);	// Make sure A2 is the shorter one.
     
     int lo = 0, hi = N2 * 2;
     while (lo <= hi) {
