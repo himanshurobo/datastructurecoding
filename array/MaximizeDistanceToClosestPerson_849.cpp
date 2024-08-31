@@ -56,7 +56,7 @@ public:
         
     }
 
-    int maxDistToClosest(vector<int>& seats) {
+    int maxDistToClosest2(vector<int>& seats) {
         int N = seats.size();
         int K = 0; //current longest group of empty seats
         int ans = 0;
@@ -81,6 +81,34 @@ public:
         }
 
         return ans;
+    }
+
+int maxDistToClosest(vector<int>& seats) {
+
+        int maxDist = 0;
+        int len = -1;
+        int n = seats.size();
+
+        for( int i =0 ;i < n; i++){
+
+            if( seats[i]== 1){
+
+                if ( len == -1){
+                    maxDist = i;
+                }else{
+                    maxDist = std::max(maxDist, (i - len) /2);
+                }
+
+                len = i;
+            }
+
+        }
+
+        if( seats[n-1] == 0){
+            maxDist = std::max(maxDist,n- 1 - len);
+        }
+        
+        return maxDist;
     }
 
 };
