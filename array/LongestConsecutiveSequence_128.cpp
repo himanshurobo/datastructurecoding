@@ -73,7 +73,7 @@ public:
          
      }
     
-    int longestConsecutive(vector<int>& nums) {
+    int longestConsecutive3(vector<int>& nums) {
         
         if( nums.size() == 0 )
             return 0;
@@ -90,6 +90,35 @@ public:
             global = max(global, local);
         }
         return global;
+    }
+
+  int longestConsecutive(vector<int>& nums) {
+
+        unordered_set<int> hash;
+        int longest = 0;
+
+        for ( int i = 0 ; i < nums.size(); i++){
+            hash.insert(nums[i]);
+        }
+
+        for( int i = 0; i < nums.size(); i++){
+
+            if(hash.find(nums[i]-1) == hash.end() ){
+                int currentLen = 1;
+                int currentElement = nums[i];
+
+                while( hash.find(currentElement + 1 ) != hash.end()){
+                    currentLen++;
+                    currentElement++;
+                }
+
+                longest = max(longest,currentLen);
+
+            }
+        }
+
+        return longest;
+        
     }
     
     
