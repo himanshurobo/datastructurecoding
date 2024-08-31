@@ -17,7 +17,7 @@ Output: 6
 
 
 WrittenBy : Himanshu Srivastava
-Problem : Largest Rectangle in Histogram
+Problem : Maximal Rectangle
 TimeComplexity : O(n)
 
 */
