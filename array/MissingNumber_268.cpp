@@ -19,6 +19,16 @@ WrittenBy : Himanshu Srivastava
 Problem : . Missing Number
 TimeComplexity : O(n)
 
+Properties of XOR
+
+- Commutative 
+A XOR B = B XOR A
+
+- XOR with 0
+A XOR 0 = A
+
+- XOR with itself 
+A XOR A = 0
 
 */
 
