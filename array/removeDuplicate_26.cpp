@@ -57,7 +57,7 @@ using namespace std;
 
 class Solution {
 public:
-    int removeDuplicates(vector<int>& nums) {
+    int removeDuplicates1(vector<int>& nums) {
         int count = 0;
         int size = nums.size();
         for( int i = 1 ; i < size; i++){
@@ -71,6 +71,21 @@ public:
         return size - count;
 
     }
+
+int removeDuplicates(vector<int>& nums) {
+    if (nums.empty()) return 0;
+
+    int i = 0; // Pointer for the position of the last unique element
+
+    for (int j = 1; j < nums.size(); ++j) {
+        if (nums[j] != nums[i]) {
+            ++i; // Move the pointer for unique elements
+            nums[i] = nums[j]; // Update the position with a new unique element
+        }
+    }
+
+    return i + 1; // Length of the array with unique elements
+}
 };
 
 
