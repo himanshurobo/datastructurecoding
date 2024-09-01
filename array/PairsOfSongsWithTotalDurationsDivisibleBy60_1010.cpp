@@ -38,7 +38,7 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
-    int numPairsDivisibleBy60(vector<int>& time) {
+    int numPairsDivisibleBy602(vector<int>& time) {
         int res = 0;
         vector<int> m(60);
         for (auto t : time) {
@@ -50,6 +50,54 @@ public:
         
         return res;
         
+    }
+int numPairsDivisibleBy601(vector<int>& time) {
+
+        vector<int> rem(60, 0);
+
+        // Count remainders
+        for (int ele : time) {
+            rem[ele % 60]++;
+        }
+
+        long long count = 0; // Use long long to prevent overflow
+
+        // Count pairs where both elements have remainder 0
+        count += static_cast<long long>(rem[0]) * (rem[0] - 1) / 2;
+        // Count pairs where both elements have remainder 30
+        count += static_cast<long long>(rem[30]) * (rem[30] - 1) / 2;
+
+        // Count pairs where the remainders add up to 60
+        for (int i = 1; i < 30; i++) {
+            count += static_cast<long long>(rem[i]) * rem[60 - i];
+        }
+
+        return static_cast<int>(count); // Return as int if needed
+        
+    }
+
+    int numPairsDivisibleBy60(vector<int>& time) {
+            unordered_map<int, int> m;
+
+        // Count remainders
+        for (int i = 0; i < time.size(); i++) {
+            time[i] %= 60;
+            m[time[i]]++;
+        }
+
+        long long count = 0; // Use long long to prevent overflow
+
+        for (auto it : m) {
+            int remainder = it.first;
+            int freq = it.second;
+            if (remainder == 0 || remainder == 30) {
+                count += static_cast<long long>(freq) * (freq - 1) / 2;
+            } else if (remainder < 30 && m.count(60 - remainder)) {
+                count += static_cast<long long>(freq) * m[60 - remainder];
+            }
+        }
+
+        return static_cast<int>(count); // Return as int if needed
     }
 };
 
