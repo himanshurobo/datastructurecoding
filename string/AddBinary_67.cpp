@@ -85,18 +85,25 @@ public:
     }
     
     
-    string addBinary(string a, string b) {
-        string result = "";
-        int i = a.size() - 1, j = b.size() - 1, carry = 0;
-        while(i >= 0 || j >= 0 || carry == 1) {
-            carry += i >=0 ? a[i--] - '0' : 0;
-            carry += j >=0 ? b[j--] - '0' : 0;
-            result += char(carry % 2 + '0');
-            carry /= 2;
-        }
-        std::reverse(result.begin(), result.end());
-        return result;
+string addBinary(string a, string b) {
+    string result;
+    int carry = 0;
+    int i = a.size() - 1;
+    int j = b.size() - 1;
+
+    // Process both strings from end to start
+    while (i >= 0 || j >= 0 || carry) {
+        int sum = carry;
+        if (i >= 0) sum += a[i--] - '0'; // Convert char to int and add to sum
+        if (j >= 0) sum += b[j--] - '0'; // Convert char to int and add to sum
+        
+        carry = sum / 2; // Calculate carry
+        result += (sum % 2) + '0'; // Add the current bit to the result
     }
+
+    reverse(result.begin(), result.end()); // Reverse the result to get the final answer
+    return result;
+}
 };
 
 
