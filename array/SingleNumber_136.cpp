@@ -15,6 +15,11 @@ Example 2:
 Input: [4,1,2,1,2]
 Output: 4
 
+Properties of XOR:
+
+a ^ a = 0 (XORing a number with itself gives 0)
+a ^ 0 = a (XORing a number with 0 gives the number itself)
+XOR is both commutative and associative, which means the order of operations doesn’t affect the result.
 
 */
 
