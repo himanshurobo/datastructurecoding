@@ -33,7 +33,7 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
-    int triangleNumber(vector<int>& nums) {
+    int triangleNumber1(vector<int>& nums) {
         
         int n = nums.size();
         int count = 0 ;
@@ -64,6 +64,35 @@ public:
         }
         
         return count;
+        
+    }
+
+  int triangleNumber(vector<int>& nums) {
+
+            int n = nums.size();
+    if (n < 3) return 0;
+
+    // Sort the array
+    sort(nums.begin(), nums.end());
+    int count = 0;
+
+    // Iterate through each possible third side
+    for (int k = 2; k < n; ++k) {
+        int i = 0, j = k - 1;
+        
+        // Use two pointers to find valid pairs (i, j)
+        while (i < j) {
+            if (nums[i] + nums[j] > nums[k]) {
+                // All pairs (i, i+1, ..., j-1) with j are valid
+                count += (j - i);
+                --j; // Move the end pointer
+            } else {
+                ++i; // Move the start pointer
+            }
+        }
+    }
+    
+    return count;
         
     }
 };
