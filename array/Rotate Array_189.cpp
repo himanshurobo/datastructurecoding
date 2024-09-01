@@ -42,7 +42,7 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
-    void rotate(vector<int>& nums, int k) {
+    void rotate1(vector<int>& nums, int k) {
         
         k = k%nums.size();
         // cout<<k<<endl;
@@ -51,4 +51,28 @@ public:
         reverse(nums.begin()+k,nums.end());
         
     }
+
+// Function to reverse a portion of the array
+void reverse(vector<int>& nums, int start, int end) {
+    while (start < end) {
+        swap(nums[start], nums[end]);
+        ++start;
+        --end;
+    }
+}
+
+// Function to rotate the array to the right by k steps
+void rotate(vector<int>& nums, int k) {
+    int n = nums.size();
+    k = k % n; // Handle cases where k >= n
+    
+    if (k == 0) return; // No rotation needed if k is 0 or a multiple of n
+    
+    // Reverse the entire array
+    reverse(nums, 0, n - 1);
+    // Reverse the first k elements
+    reverse(nums, 0, k - 1);
+    // Reverse the rest of the array
+    reverse(nums, k, n - 1);
+}
 };
