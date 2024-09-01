@@ -65,7 +65,7 @@ public:
 
     }
 
-    int removeDuplicates(vector<int>& nums) {
+    int removeDuplicates1(vector<int>& nums) {
         int i = 0;
         for( int j =1 ; j<nums.size();j++){
             if( nums[i] != nums[j]){
@@ -77,6 +77,29 @@ public:
         return i+1;
 
     }
+
+int removeDuplicates(vector<int>& nums) {
+    if (nums.empty()) return 0;
+    
+    int j = 0; // Pointer for the position to place the next valid element
+    int count = 0; // Count of occurrences of the current element
+
+    for (int i = 0; i < nums.size(); ++i) {
+        if (i == 0 || nums[i] != nums[i - 1]) {
+            count = 1; // Reset count for a new element
+        } else {
+            count++;
+        }
+        
+        // Place element if it appears at most twice
+        if (count <= 2) {
+            nums[j++] = nums[i];
+        }
+    }
+    
+    return j; // Length of the modified array
+}
+
 };
 
 
