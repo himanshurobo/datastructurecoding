@@ -27,7 +27,7 @@ using namespace std;
 
 class Solution {
 public:
-    int trap(vector<int>& height) {
+    int trap1(vector<int>& height) {
 
        int l = 0, r = height.size()-1, level = 0, water = 0;
     while (l < r) {
@@ -39,6 +39,40 @@ public:
     }
     return water;
 
+    }
+
+int trap(vector<int>& height) {
+
+        int n = height.size();
+
+        if( n<= 2){
+            return 0;
+        }
+        
+        vector<int>left(n);
+        int leftMax = height[0];
+        left[0] = 0;
+        for( int i= 1 ; i < n ; i ++){
+           left[i] = leftMax;
+           leftMax = max(leftMax,height[i]);
+        }
+
+        vector<int> right(n);
+        int rightMax = height[n-1];
+        right[n-1] = 0;
+        for( int i = n-2; i>=0; i--){
+            right[i] = rightMax;
+            rightMax = max( rightMax,height[i]);
+        }
+
+        int water = 0;
+        for( int i = 0 ; i < n ;i++){
+            if( height[i] < left[i] && height[i] < right[i] ){
+                water += min(left[i],right[i]) - height[i];
+            }
+        }
+
+        return water;
     }
 };
 
