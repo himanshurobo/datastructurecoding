@@ -33,7 +33,7 @@ calculated later.
 
 class Solution {
 public:
-    int singleNumber(vector<int>& nums) {
+    int singleNumber1(vector<int>& nums) {
         
         int ones = 0, twos = 0;
         for(int i = 0; i < nums.size(); i++){
@@ -42,4 +42,21 @@ public:
         }
         return ones;
     }
+   int singleNumber(vector<int>& nums) {
+       // Sort the array
+       sort(nums.begin(), nums.end());
+       
+       int n = nums.size();
+       
+       // Traverse the array to find the unique element
+       for (int i = 0; i < n; i += 3) {
+           // If we are at the last element or the next two elements are different
+           if (i + 2 >= n || nums[i] != nums[i + 1]) {
+               return nums[i];
+           }
+       }
+       
+       // In case of invalid input or if the input array is not valid
+       return -1;  // This should never be reached with valid input
+   }
 };
