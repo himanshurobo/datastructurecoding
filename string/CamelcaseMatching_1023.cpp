@@ -38,10 +38,31 @@ TimeComplexity : O(n)
 */
 
 class Solution {
+
+ bool isCamelMatch( string query, string pattern){
+        int i = 0;
+        int j = 0 ;
+        int qS = query.size() ;
+        int pS = pattern.size() ;
+
+        while(i < qS ){
+            cout<<j<<" "<<pS<<" "<<i<<" "<<qS<<" "<<query[i]<<" "<<pattern[j]<<endl;
+            if( j < pS && query[i]==pattern[j]){
+                j++;
+            }else if ( !islower(query[i])){
+                return false;
+            }
+            i++;
+            
+        }
+        cout<<"FINAL "<<j<<" "<<pS<<endl;
+        return j == pS ;
+    }
+
 public:
     // Runtime: O(n), where n is all letters in all queries. We process each letter only once.
 // Memory: O(m), where m is the number of queries (to store the resul
-    vector<bool> camelMatch(vector<string>& queries, string pattern) {
+    vector<bool> camelMatch1(vector<string>& queries, string pattern) {
      
         vector<bool> res;
     for (auto i = 0, j = 0, p = 0; i < queries.size(); ++i) {
@@ -54,6 +75,20 @@ public:
   return res;
         
     }
+
+vector<bool> camelMatch(vector<string>& queries, string pattern) {
+
+        vector<bool> res;
+        int n = queries.size();
+        
+        for ( int i = 0 ; i < n; i++ ){
+            res.push_back(isCamelMatch(queries[i], pattern));
+        }
+        
+        return res;
+    }
+
+
 };
 
 
