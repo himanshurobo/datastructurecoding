@@ -39,7 +39,7 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
-    bool isLongPressedName(string name, string typed) {
+    bool isLongPressedName1(string name, string typed) {
        int i =0; int j =0;
         while(i<name.size() || j <typed.size()) {
             char current = name[i];
@@ -52,6 +52,30 @@ public:
         }
     return true;
         
+        
+    }
+
+bool isLongPressedName(string name, string typed) {
+
+        int n_len = name.size();
+        int t_len = typed.size();
+
+        int i = 0;
+        int j = 0;
+
+        while( j < t_len ){
+
+            if ( name[i] == typed[j]){
+                i++;
+                j++;
+            }else if ( i > 0 && name[i-1] == typed[j]){
+                j++;
+            }else{
+                return false;
+            }
+        }
+
+        return i==n_len;
         
     }
 };
