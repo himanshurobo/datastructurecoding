@@ -25,7 +25,7 @@ public:
     
     
     
-    string longestPalindrome(string s) {
+    string longestPalindrome2(string s) {
         
         int newLength = 2*s.size() + 1;
         
@@ -137,7 +137,52 @@ public:
         return "ABC";
 
     }
-    
+    string longestPalindrome(string s) {
+        
+        int n = s.size();
+        if ( n == 0 ){
+            return "";
+        }
+
+        int start = 0;
+        int end = 1;
+
+        vector<vector<int>> dp(n,vector<int>(n,0));
+        // int maxLen = 0;
+        for( int i =0 ;i < n; i++){
+            dp[i][i] = 1;
+            if( i < n-1 && s[i] == s[i+1]){
+                dp[i][i+1] = 2;
+                // maxLen = max(maxLen,dp[i][i+1]);
+                start = i;
+                end = 2;
+            }
+        }
+        // cout<<start<<" "<<end<<endl;
+
+        for( int length = 2 ; length <= n; length++){
+            for( int i = 0 ; i < n; i++){
+                int j = i+length-1;
+                // cout<<i<<" "<<s[i]<<" | "<<j<<" "<<s[j]<<endl;
+                if( i < n-1 && j < n && s[i] == s[j] && dp[i+1][j-1] != 0 ){
+                    dp[i][j] = j-i+1;
+                    // maxLen = max(maxLen,dp[i][j]);
+                    start = i;
+                    end = dp[i+1][j-1] + 2;
+                    // cout<<i+1<<":"<<j-1<<"->"<<dp[i+1][j-1]<<endl;
+                    // cout<<"start "<<start<<" end "<<end<<endl;
+                }
+            }
+        }
+        // cout<<start<<" "<<end<<endl;
+        // for( int i = 0 ; i < n; i++){
+        //     for( int j = 0; j < n; j++){
+        //         cout<<dp[i][j]<<" ";
+        //     }
+        //     cout<<endl;
+        // }
+        return s.substr(start,end);
+    }
  
 };
 
