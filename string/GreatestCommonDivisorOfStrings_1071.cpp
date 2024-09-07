@@ -29,13 +29,47 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
-    string gcdOfStrings(string str1, string str2) {
+    string gcdOfStrings1(string str1, string str2) {
         if (str1.size() < str2.size()) return gcdOfStrings(str2, str1);
         if (str2.empty()) return str1;
         if (str1.substr(0, str2.size()) != str2) return "";
         cout<<str1.substr(str2.size())<<endl;
         return gcdOfStrings(str1.substr(str2.size()), str2);
         
+    }
+string gcdOfStrings(string str1, string str2) {
+
+        int n1 = str1.size();
+        int n2 = str2.size();
+
+        if( n1 < n2 ){
+            return gcdOfStrings(str2,str1);
+        }
+
+        for ( int i = n1; i > 0 ; i--){
+
+            if ( n1 % i == 0 && n2 % i == 0){
+
+                int j = 0;
+                string s1 = "";
+                string s2 = "";
+
+                while( j < n1 ){
+                    s1 += str1.substr(0,i);
+                    if ( j < n2 ){
+                        s2 += str2.substr(0,i);
+                    }
+                    j += i;
+                }
+                // cout<<i<<"-->"<<s1<<":"<<str1<<"|"<<s2<<":"<<str2<<endl;
+                if( s1 == str1 && s2 == str2 && str1.substr(0,i) == str2.substr(0,i)){
+                    return str1.substr(0,i);
+                }
+                
+            }
+        }
+        
+        return "";
     }
 };
 
