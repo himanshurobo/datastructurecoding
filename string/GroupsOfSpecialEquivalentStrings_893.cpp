@@ -62,6 +62,12 @@ public:
     return s.size (); //Time: O(n * w log w)
         
     }
+
+    string gcdOfStrings2(string str1, string str2) {
+
+        return (str1 + str2 == str2 + str1)? 
+        str1.substr(0, gcd(size(str1),size(str2))): "";
+    }
 };
 
 void displayInt(vector<string>input){
