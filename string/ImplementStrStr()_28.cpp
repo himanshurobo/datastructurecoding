@@ -75,13 +75,29 @@ public:
         
         return -1;
     }
-    int strStr(string haystack, string needle) {
+    int strStr1(string haystack, string needle) {
         int m = haystack.size(), n = needle.size(), p = 0;
         while (p + n - 1 < m) {
             if (haystack.substr(p, n) == needle) {
                 return p;
             }
             while (p++ + n - 1 < m && haystack[p] != needle[0]);
+        }
+        return -1;
+    }
+
+    int strStr(string haystack, string needle) {
+        int h=haystack.size();
+        int n=needle.size();
+        if(h<n) return -1;
+        int k=0,j;
+        for(int i=0 ; i<h ; i++){
+            j=i;
+            while(k<n && i<h && haystack[j]==needle[k] ){
+                k++,j++;
+            }
+            if(k==n) return i;
+            k=0; 
         }
         return -1;
     }
