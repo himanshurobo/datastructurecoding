@@ -36,7 +36,7 @@ TimeComplexity : O(n)
  */
 class Solution {
     
-    int dfs(stack<TreeNode*>& s ){
+    int dfs1(stack<TreeNode*>& s ){
         
         while(true){
             TreeNode* t = s.top();
@@ -56,7 +56,7 @@ class Solution {
     }
     
 public:
-    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+    bool leafSimilar1(TreeNode* root1, TreeNode* root2) {
         
         stack<TreeNode*> s1, s2;
         
@@ -64,12 +64,38 @@ public:
         s2.push(root2);
         
         while(!s1.empty() && !s2.empty()){
-            if(dfs(s1) != dfs(s2)){
+            if(dfs1(s1) != dfs1(s2)){
                 return false;
             }
         }
         
         return true;
         
+    }
+
+vector<int> leaves(TreeNode* root) {
+        vector<int> result;
+        stack<TreeNode*> s;
+        s.push(root);
+        while (!s.empty()) {
+            auto* node = s.top();
+            s.pop();
+            if (node->right == nullptr && node->left == nullptr) {
+                result.push_back(node->val);
+            }
+
+            if (node->right) {
+                s.push(node->right);
+            }
+            if (node->left) {
+                s.push(node->left);
+            }
+        }
+
+        return result;
+    }
+
+    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        return leaves(root1) == leaves(root2);
     }
 };
