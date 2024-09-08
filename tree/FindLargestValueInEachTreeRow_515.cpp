@@ -63,7 +63,7 @@ public:
 
  vector<int> largestValues(TreeNode* root) {
         vector<int> result;
-        if (root == nullptr) {
+        if (root == NULL) {
             return result; // Return empty if the tree is empty
         }
         
@@ -80,10 +80,10 @@ public:
                 
                 maxVal = max(maxVal, node->val);  // Update maxVal
                 
-                if (node->left != nullptr) {
+                if (node->left != NULL) {
                     q.push(node->left);
                 }
-                if (node->right != nullptr) {
+                if (node->right != NULL) {
                     q.push(node->right);
                 }
             }
