@@ -52,8 +52,8 @@ class Solution {
             }
         }
         
-        node->left = createTree( inorder,is,index-1, postorder,ps, ps + index - is - 1);
-        node->right = createTree( inorder,index+1,ie, postorder, pe + index- ie,pe-1);
+        node->left = createTree( inorder,is,index-1, postorder,ps, ps + ( index - is ) -1 );
+        node->right = createTree( inorder,index+1,ie, postorder, pe - ( ie - index), pe-1);
         return node;
         
         
