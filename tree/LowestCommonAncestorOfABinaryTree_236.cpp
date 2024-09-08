@@ -46,7 +46,7 @@ TimeComplexity : O(n)
  */
 class Solution {
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    TreeNode* lowestCommonAncestor1(TreeNode* root, TreeNode* p, TreeNode* q) {
         
         if(root == NULL || root == p || root == q)
             return root;
@@ -57,5 +57,29 @@ public:
             
         return !left? right : !right ? left : root;
         
+    }
+
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        
+        if( root->val == p->val || root->val == q->val ){
+            return root;
+        }
+
+        TreeNode* left = NULL;
+        TreeNode* right = NULL;
+        if( root->left ){
+            left = lowestCommonAncestor( root->left, p, q);
+        }
+
+        if( root->right){
+            right = lowestCommonAncestor( root->right, p, q);
+        }
+
+        if( left && right ){
+            return root;
+        }
+
+        return left?left:right;
+
     }
 };
