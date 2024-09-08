@@ -80,7 +80,7 @@ vector<int> leaves(TreeNode* root) {
         while (!s.empty()) {
             auto* node = s.top();
             s.pop();
-            if (node->right == nullptr && node->left == nullptr) {
+            if (!node->right && !node->left) {
                 result.push_back(node->val);
             }
 
