@@ -52,7 +52,7 @@ TimeComplexity : O(n)
 class Solution {
 public:
     
-    int height( TreeNode* root){
+    int height1( TreeNode* root){
         
         if( !root ){
             return 0;
@@ -69,7 +69,7 @@ public:
         
     }
     
-    bool isBalanced(TreeNode* root) {
+    bool isBalanced1(TreeNode* root) {
         
         if( !root){
             return true;
@@ -79,6 +79,35 @@ public:
         int hR = height(root->right);
         
         return abs(hL-hR) <= 1 && isBalanced(root->left) && isBalanced(root->right) ;
+        
+    }
+
+    int checkHeight( TreeNode* root){
+
+        if ( root == NULL ){
+            return 0;
+        }
+
+        int leftHeight = checkHeight(root->left);
+        if( leftHeight == -1 ){
+            return -1;
+        }
+
+        int rightHeight = checkHeight(root->right);
+        if( rightHeight == -1 ){
+            return -1;
+        }
+
+        if( abs(leftHeight - rightHeight ) > 1 ){
+            return -1;
+        }
+
+        return max(leftHeight,rightHeight) + 1;
+    }
+
+    bool isBalanced(TreeNode* root) {
+
+        return checkHeight(root) != -1;
         
     }
 };
