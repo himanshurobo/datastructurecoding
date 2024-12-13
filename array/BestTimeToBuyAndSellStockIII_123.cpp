@@ -33,7 +33,7 @@ TimeComplexity : O(n*m)
 
 class Solution {
 public:
-    int maxProfit(vector<int> &prices) {
+    int maxProfit1(vector<int> &prices) {
         // f[k, ii] represents the max profit up until prices[ii] (Note: NOT ending with prices[ii]) using at most k transactions.
         // f[k, ii] = max(f[k, ii-1], prices[ii] - prices[jj] + f[k-1, jj]) { jj in range of [0, ii-1] }
         //          = max(f[k, ii-1], prices[ii] + max(f[k-1, jj] - prices[jj]))
@@ -55,6 +55,24 @@ public:
             return maxProf;
         }
     }
+
+    int maxProfit(vector<int>& prices) {
+      if (prices.empty()) return 0;
+  
+      // Initialize variables to track the four states
+      int buy1 = INT_MIN, sell1 = 0, buy2 = INT_MIN, sell2 = 0;
+  
+      // Iterate over each price
+      for (int price : prices) {
+          // Update the four states
+          buy1 = max(buy1, -price);             // Buy the first stock
+          sell1 = max(sell1, price + buy1);     // Sell the first stock
+          buy2 = max(buy2, sell1 - price);      // Buy the second stock
+          sell2 = max(sell2, price + buy2);     // Sell the second stock
+      }
+  
+      return sell2; // The final profit after two transactions
+}
 };
 
 
