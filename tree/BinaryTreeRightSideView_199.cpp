@@ -45,6 +45,60 @@ class Solution {
         rightSide(root->left,level+1);
         
     }
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> result;
+        if (root == nullptr) {
+            return result; // Return empty if tree is empty
+        }
+
+        queue<TreeNode*> q; // Queue for level-order traversal
+        q.push(root);
+
+        while (!q.empty()) {
+            int levelSize = q.size(); // Number of nodes at the current level
+            TreeNode* lastNode = nullptr;
+
+            for (int i = 0; i < levelSize; ++i) {
+                TreeNode* currentNode = q.front();
+                q.pop();
+
+                // Keep track of the last node in the current level
+                lastNode = currentNode;
+
+                // Add left and right children to the queue for the next level
+                if (currentNode->left) {
+                    q.push(currentNode->left);
+                }
+                if (currentNode->right) {
+                    q.push(currentNode->right);
+                }
+            }
+
+            // Add the last node's value from the current level to the result
+            if (lastNode) {
+                result.push_back(lastNode->val);
+            }
+        }
+
+        return result;
+    }
+};
+
 public:
     vector<int> rightSideView(TreeNode* root) {
         rightSide(root,1);
