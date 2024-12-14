@@ -30,6 +30,48 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
+
+// Function to find the length of the longest substring without repeating characters
+    int lengthOfLongestSubstring(string s) {
+
+        // 'n' is the length of the string
+        int n = s.size();
+
+        // 'start' and 'end' represent the window of characters we are currently considering
+        int start = 0;
+        int end = 0;
+        
+        // 'maxlen' holds the length of the longest valid substring found
+        int maxlen = 0;
+
+        // 'hash' is a set to store characters that are currently in the window
+        set<char> hash;
+
+        // Iterate over the string until the 'end' pointer reaches the end of the string
+        while( end < n){
+
+            // If the current character is not in the set, it's valid for the current window
+            if(hash.find(s[end]) == hash.end()){
+                // Update maxlen if the current window is longer than the previously found ones
+                maxlen = max(maxlen, end - start + 1);
+                // Add the current character to the set
+                hash.insert(s[end]);
+                // Move the 'end' pointer to expand the window
+                end++;
+            }else{
+                // If the current character is already in the set, move the 'start' pointer
+                // to shrink the window and remove characters from the set until the duplicate is removed
+                hash.erase(s[start]);
+                start++;
+            }
+
+        }
+
+        // Return the length of the longest valid substring found
+        return maxlen;
+    }
+
+
     int lengthOfLongestSubstring(string ch) {
       int max = 0;
       int start = 0 ;
