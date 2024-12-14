@@ -20,7 +20,8 @@ Output:
 
 WrittenBy : Himanshu Srivastava
 Problem : Pascal's Triangle I
-TimeComplexity : O(n)
+TimeComplexity : O(n^2)
+Space Complexcity : O(n^2)
 
 */
 
