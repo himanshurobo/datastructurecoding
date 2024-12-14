@@ -63,6 +63,65 @@ class Solution {
     
     
 public:
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
+class Solution {
+public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if (root == nullptr) {
+            return root; // If the tree is empty or the node is not found
+        }
+
+        // Traverse the tree to find the node to delete
+        if (key < root->val) {
+            root->left = deleteNode(root->left, key); // Go left
+        } else if (key > root->val) {
+            root->right = deleteNode(root->right, key); // Go right
+        } else {
+            // Node to be deleted found
+            // Case 1: Node has no children (leaf node) or one child
+            if (root->left == nullptr) {
+                TreeNode* temp = root->right;
+                delete root;
+                return temp;
+            } else if (root->right == nullptr) {
+                TreeNode* temp = root->left;
+                delete root;
+                return temp;
+            }
+
+            // Case 2: Node has two children
+            // Find the inorder successor (smallest in the right subtree)
+            TreeNode* successor = findMinNode(root->right);
+            root->val = successor->val; // Replace the node's value with successor's value
+            // Delete the successor
+            root->right = deleteNode(root->right, successor->val);
+        }
+
+        return root; // Return the updated root
+    }
+
+private:
+    // Helper function to find the minimum value node in a tree
+    TreeNode* findMin(TreeNode* node) {
+        while (node->left != nullptr) {
+            node = node->left; // Keep going left
+        }
+        return node;
+    }
+};
+
     TreeNode*   (TreeNode* root, int key) {
         
         if(root == NULL){
@@ -86,9 +145,6 @@ public:
                 root->right = deleteNode(root->right, successor->val);
             }
         }
-        
-        return root;
-    
-        
+        return root;       
     }
 };
