@@ -31,7 +31,24 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
-    int numEquivDominoPairs(vector<vector<int>>& dominoes) {
+
+
+   int numEquivDominoPairs(vector<vector<int>>& dominoes) {
+        unordered_map<int, int> freqMap;
+        int count = 0;
+
+        for (const auto& domino : dominoes) {
+            // Normalize the domino to ensure unique representation
+            int key = min(domino[0], domino[1]) * 10 + max(domino[0], domino[1]);
+            count += freqMap[key]; // Add the count of existing equivalent dominoes
+            freqMap[key]++;
+        }
+
+        return count;
+    }
+
+
+    int numEquivDominoPairs1(vector<vector<int>>& dominoes) {
         
         // 1 <= dominoes[i][j] <= 9
         vector<int> res(100);
