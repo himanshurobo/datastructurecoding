@@ -34,7 +34,28 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
-    bool judgeCircle(string moves) {
+
+ bool judgeCircle(string moves) {
+        int x = 0, y = 0;
+
+        // Process each move
+        for (char move : moves) {
+            if (move == 'U') {
+                y++; // Move up
+            } else if (move == 'D') {
+                y--; // Move down
+            } else if (move == 'R') {
+                x++; // Move right
+            } else if (move == 'L') {
+                x--; // Move left
+            }
+        }
+
+        // Return true if back to the origin
+        return x == 0 && y == 0;
+    }
+
+    bool judgeCircle1(string moves) {
         if(count(moves.begin(), moves.end(), 'L') != count(moves.begin(), moves.end(), 'R')) return false;
         else if (count(moves.begin(), moves.end(), 'U') != count(moves.begin(), moves.end(), 'D')) return false;
         return true;
