@@ -40,6 +40,40 @@ Path Sum III
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+class Solution {
+    int count = 0; // Global variable to store the count of valid paths
+
+    // Helper function to calculate paths starting from the current node
+    void dfs(TreeNode* root, int sum) {
+        if (!root) return;
+
+        // If the current node's value matches the remaining sum, increment the count
+        if (root->val == sum) {
+            count++;
+        }
+
+        // Recursively check left and right subtrees with the updated sum
+        dfs(root->left, sum - root->val);
+        dfs(root->right, sum - root->val);
+    }
+
+public:
+    int pathSum(TreeNode* root, int sum) {
+        if (!root) return 0;
+
+        // Perform a DFS starting at the current node
+        dfs(root, sum);
+
+        // Recursively check for paths in the left and right subtrees
+        pathSum(root->left, sum);
+        pathSum(root->right, sum);
+
+        return count;
+    }
+};
+
+
 class Solution {
     
     int dfs( TreeNode* root, int sum){
