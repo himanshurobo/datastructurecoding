@@ -54,19 +54,23 @@ TimeComplexity : O(n)
  * };
  */
 class Solution {
-    int sumNumber(TreeNode* root, int level){
-        
-        if(root == NULL)
+    int sumNumber(TreeNode* root, int currentSum) {
+        if (root == nullptr)
             return 0;
-        
-        if(root->left == NULL && root->right == NULL)
-            return level*10 +root->val;
-        
-        return sumNumber( root->left,level*10 + root->val) + sumNumber(root->right,level*10+root->val);
-        
+
+        // Update the current sum for the path
+        currentSum = currentSum * 10 + root->val;
+
+        // If it's a leaf node, return the current sum
+        if (root->left == nullptr && root->right == nullptr)
+            return currentSum;
+
+        // Recursively calculate the sum for left and right subtrees
+        return sumNumber(root->left, currentSum) + sumNumber(root->right, currentSum);
     }
+
 public:
     int sumNumbers(TreeNode* root) {
-        return sumNumber(root,0);
+        return sumNumber(root, 0);
     }
 };
