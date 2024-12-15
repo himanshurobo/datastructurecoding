@@ -49,35 +49,55 @@ TimeComplexity : O(n)
 */
 
 
-
 class Solution {
 public:
-    int romanToInt(string s) {
-         unordered_map<char, int> T = { { 'I' , 1 },
-                                   { 'V' , 5 },
-                                   { 'X' , 10 },
-                                   { 'L' , 50 },
-                                   { 'C' , 100 },
-                                   { 'D' , 500 },
-                                   { 'M' , 1000 } };
-                                   
-   int sum = T[s.back()];
-   for (int i = s.length() - 2; i >= 0; --i) 
-   {
-       if (T[s[i]] < T[s[i + 1]])
-       {
-           sum -= T[s[i]];
-       }
-       else
-       {
-           sum += T[s[i]];
-       }
-   }
-   
-   return sum;
+    vector<int>    val{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    vector<string> sym{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+  
+    string intToRoman(int num) {
+        
+        string result = "";
+        int i = 0;
+        while(num > 0) {
+            while(num >= val[i]) {
+                num -= val[i];
+                result += sym[i];
+            }
+            i++;
+        }
+        return result;
         
     }
 };
+
+// class Solution {
+// public:
+//     int romanToInt(string s) {
+//          unordered_map<char, int> T = { { 'I' , 1 },
+//                                    { 'V' , 5 },
+//                                    { 'X' , 10 },
+//                                    { 'L' , 50 },
+//                                    { 'C' , 100 },
+//                                    { 'D' , 500 },
+//                                    { 'M' , 1000 } };
+                                   
+//    int sum = T[s.back()];
+//    for (int i = s.length() - 2; i >= 0; --i) 
+//    {
+//        if (T[s[i]] < T[s[i + 1]])
+//        {
+//            sum -= T[s[i]];
+//        }
+//        else
+//        {
+//            sum += T[s[i]];
+//        }
+//    }
+   
+//    return sum;
+        
+//     }
+// };
 
 void displayInt(vector<string>input){
     cout<<"Displaying size "<<input.size()<<endl;
