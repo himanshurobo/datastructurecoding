@@ -38,7 +38,20 @@ TimeComplexity : O(n)
 
 class Solution {
 public:
+
     int maxProfit(vector<int>& prices, int fee) {
+        int hold = -prices[0] - fee;  // Equivalent to dp[i][0]
+        int sell = 0;                // Equivalent to dp[i][1]
+
+        for (int i = 1; i < prices.size(); i++) {
+            hold = max(hold, sell - prices[i] - fee);
+            sell = max(sell, hold + prices[i]);
+        }
+
+        return sell; // Maximum profit when no stock is held on the last day
+    }
+
+    int maxProfit1(vector<int>& prices, int fee) {
         
         int n = prices.size();
         
