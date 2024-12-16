@@ -49,26 +49,34 @@ TimeComplexity : O(n)
 */
 
 
+#include <unordered_map>
+#include <string>
+using namespace std;
+
 class Solution {
 public:
-    vector<int>    val{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-    vector<string> sym{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-  
-    string intToRoman(int num) {
+    int romanToInt(string s) {
+        unordered_map<char, int> roman = {
+            {'I', 1}, {'V', 5}, {'X', 10},
+            {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}
+        };
         
-        string result = "";
-        int i = 0;
-        while(num > 0) {
-            while(num >= val[i]) {
-                num -= val[i];
-                result += sym[i];
+        int result = 0;
+        int n = s.size();
+        
+        for (int i = 0; i < n; ++i) {
+            // Check if current numeral is less than the next one
+            if (i < n - 1 && roman[s[i]] < roman[s[i + 1]]) {
+                result -= roman[s[i]]; // Subtract
+            } else {
+                result += roman[s[i]]; // Add
             }
-            i++;
         }
-        return result;
         
+        return result;
     }
 };
+
 
 // class Solution {
 // public:
