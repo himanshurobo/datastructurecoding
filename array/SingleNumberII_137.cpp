@@ -60,3 +60,29 @@ public:
        return -1;  // This should never be reached with valid input
    }
 };
+
+
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        long long sumOfUnique = 0, sumOfAll = 0;  
+        unordered_set<int> uniqueElements;
+
+        // Calculate the sum of all elements and the sum of unique elements
+        for (int num : nums) {
+            sumOfAll += num;
+            if (uniqueElements.find(num) == uniqueElements.end()) {
+                uniqueElements.insert(num);
+                sumOfUnique += num;
+            }
+        }
+
+        // Apply the formula to get the unique number
+        return (3 * sumOfUnique - sumOfAll) / 2;
+    }
+};
+
